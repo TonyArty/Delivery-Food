@@ -23,4 +23,10 @@ const modalFunc = () => {
 		}
 	})
 }
+
+const restsFunc = () => {
+	console.log('restsFunc');
+}
+
 modalFunc()
+restsFunc()
