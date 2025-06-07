@@ -134,5 +134,102 @@ const restsFunc = () => {
 	}
 }
 
+const productsFunc = () => {
+	const container = document.querySelector('#products-container')
+
+	const goods = [
+			{
+					id: 0,
+					name: 'Ролл угорь стандарт',
+					text: 'Рис, угорь, соус унаги, кунжут, водоросли нори.',        
+					price: 250,        
+					image: 'rollone.jpg'
+			},
+			{
+					id: 1,
+					name: 'Калифорния лосось стандарт',
+					text: 'Рис, лосось, авокадо, огурец, майонез, икра масаго, водоросли нори.',        
+					price: 395,       
+					image: 'rolltwo.jpg'
+			},
+			{
+					id: 2,
+					name: 'Окинава стандарт',
+					text: 'Рис, креветка отварная, сыр сливочный, лосось, огурец свежий...',
+					price: 250,        
+					image: 'rollthree.jpg'
+			},
+			{
+					id: 3,
+					name: 'Цезарь маки хl',
+					text: 'Рис, креветка отварная, сыр сливочный, лосось, огурец свежий...',
+					price: 250,        
+					image: 'rollfour.jpg'
+			},
+			{
+					id: 4,
+					name: 'Ясай маки стандарт 185 г',
+					text: 'Рис, помидор свежий, перец болгарский, авокадо, огурец, айсберг',
+					price: 250,        
+					image: 'rollfive.jpg'
+			},
+			{
+					id: 5,
+					name: 'Ролл с креветкой стандарт',
+					text: 'Рис, водоросли нори, креветки отварные, сыр сливочный, огурцы',
+					price: 250,        
+					image: 'rollsix.jpg'
+			},
+	]
+
+	const loading = () => {
+		container.innerHTML = '<p style="width: 100%; text-align: center;">Загрузка...</p>'
+	}
+
+	const renderGods = (array) => {
+		container.innerHTML = ''
+
+		array.forEach((card) => {
+			container.insertAdjacentHTML('beforeend', `
+				<div class="products-card">
+						<div class="products-card__image">
+								<img src="./images/goods/${card.image}" alt="${card.name}">
+						</div>
+						<div class="products-card__description">
+								<div class="products-card__description-row">
+										<h5 class="products-card__description-row--name">
+												${card.name}
+										</h5>
+								</div>
+								<div class="products-card__description-row">
+										<p class="products-card__description-row--text">
+												${card.text}
+										</p>
+								</div>
+								<div class="products-card__description-row">
+										<div class="products-card__description-row--controls">
+												<button class="btn btn-primary">
+														В корзину
+														<img src="./images/icons/shopping-cart2.svg" alt="account">
+												</button>
+												<span class="products-card__description-row-controls--price">${card.price} ₽</span>
+										</div>
+								</div>
+						</div>
+				</div>
+			`)
+		})
+	}
+
+	if (container) {
+		loading()
+		
+		setTimeout(() => {
+			renderGods(goods)
+		}, 1500)
+	}
+}
+
 modalFunc()
 restsFunc()
+productsFunc()
